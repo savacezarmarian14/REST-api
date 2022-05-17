@@ -1,0 +1,29 @@
+In implementarea mea am ales o solutie modularizata, impartita pe taskuri astfel
+incat sa fie usor de urmarit si in special usor de corectat.
+
+Am facut 8 functii:
+    - register_accout 
+    - login
+    - access_library
+    - get_books
+    - get_book
+    - add_book
+    - delete_book
+    - logout
+
+Desi toate functiile au un parametru sockfd, acesta este redundant deoarece
+am declarat o variabila globala sockfd insa prima iteratie a temei m a fortat
+sa las parametrul
+
+Toate functiile au in compun flow ul operatiilor:
+    - [Verificare/Check valabilitate]
+    - Deschide un socket pentru conexiune
+    - Creaza un mesaj aferent fiecarui task (GET/POST/DELETE)
+    - Trimite mesajul catre server
+    - Primeste raspuns de la server
+    - [Trateaza cazurile in functie de raspuns]
+
+In cadrul acestei teme am folosit requests.c si requests.h din cadrul primului
+laborator de cereri HTTP. In acesta am adaugat functia compute_delete_request
+functie asemanatoare cu compute_get_request doar ca metoda este DELETE nu GET
+
